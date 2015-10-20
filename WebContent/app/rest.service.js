@@ -3,7 +3,7 @@ angular.module('ien').service('$rest',['$resource',function($resource){
 
         livro: function(){
 
-            return $resource('/ien/rs/livro/:codigo', {
+            return $resource('/PortalIEN/rs/livro/:codigo', {
                 codigo: '@codigo'
             },{
                 update: {
@@ -15,7 +15,7 @@ angular.module('ien').service('$rest',['$resource',function($resource){
 
         autor: function(){
 
-            return $resource('/ien/rs/autor/:codigo', {
+            return $resource('/PortalIEN/rs/autor/:codigo', {
                 codigo: '@codigo'
             },{
                 update: {
@@ -27,7 +27,7 @@ angular.module('ien').service('$rest',['$resource',function($resource){
 
         categoria: function(){
 
-            return $resource('/ien/rs/categoria/:codigo', {
+            return $resource('/PortalIEN/rs/categoria/:codigo', {
                 codigo: '@codigo'
             },{
                 update: {
