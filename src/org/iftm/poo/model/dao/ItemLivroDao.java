@@ -6,8 +6,10 @@
 package org.iftm.poo.model.dao;
 
 import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+
 import org.iftm.poo.model.domain.ItemLivro;
 import org.iftm.poo.model.domain.Livro;
 
@@ -30,7 +32,7 @@ public class ItemLivroDao extends TemplateDao<ItemLivro>{
         return itemLivro;
     }
     
-    public List<ItemLivro> itensLivro(Livro livro) throws Exception {
+    public List<ItemLivro> itensLivro(final Livro livro) throws Exception {
         return (List<ItemLivro>) this.operacaoTransacional(new ComandoPersistencia(){
             @Override
             public Object execute(EntityManager em) throws Exception {

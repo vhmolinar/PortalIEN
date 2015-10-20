@@ -13,7 +13,6 @@ import org.iftm.poo.model.dao.LivroDao;
 import org.iftm.poo.model.domain.ItemLivro;
 import org.iftm.poo.model.domain.Livro;
 import org.iftm.poo.model.domain.StatusLivro;
-import org.iftm.poo.model.domain.Usuario;
 import org.iftm.poo.service.DaoFactory;
 
 /**
@@ -61,10 +60,6 @@ public class LivroService {
         Livro l = new Livro();
         l.setCodLivro(codLivro);
         return livroDao.pesquisar(l).get(0);
-    }
-    
-    public List<Livro> buscarLivrosEmprestimoUsuario(Usuario usuario) throws Exception{
-        return livroDao.buscarLivrosEmprestimoUsuario(usuario);
     }
 
     public List<Livro> pesquisarTodos() throws Exception{

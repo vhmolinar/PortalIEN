@@ -11,7 +11,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import org.iftm.poo.model.domain.Livro;
-import org.iftm.poo.model.domain.Usuario;
 
 /**
  *
@@ -31,26 +30,7 @@ public class LivroDao extends TemplateDao<Livro>{
         em.persist(livro);
         return livro;
     }
-    
-    @SuppressWarnings("unchecked")
-	public List<Livro> buscarLivrosEmprestimoUsuario(Usuario usuario) throws Exception{
-        return (List<Livro>) operacaoTransacional(new ComandoPersistencia() {
-            @Override
-            public Object execute(EntityManager em) throws Exception {
-                StringBuilder sql = new StringBuilder("select l.* from livro l ");
-                sql.append("inner join item_livro il on il.cod_livro = l.cod ");
-                sql.append("inner join item_emprestimo ie on ie.cod_item_livro=il.cod ");
-                sql.append("inner join emprestimo e on e.cod = ie.cod_emprestimo ");
-                sql.append("where e.cod_usuario = :codUsuario ");
-
-                Query query = em.createNativeQuery(sql.toString(), Livro.class);
-                query.setParameter("codUsuario", usuario.getCodUsuario());
-
-                return query.getResultList();
-            }
-        });
-    }
-    
+     
 	@SuppressWarnings("unchecked")
 	@Override
     protected List<Livro> pesquisar(EntityManager em, Livro livro) throws Exception {

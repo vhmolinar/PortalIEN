@@ -5,30 +5,16 @@
  */
 package org.iftm.poo.service;
 
-import org.iftm.poo.model.dao.AlunoDao;
 import org.iftm.poo.model.dao.AutorDao;
 import org.iftm.poo.model.dao.CategoriaDao;
-import org.iftm.poo.model.dao.EmprestimoDao;
 import org.iftm.poo.model.dao.GenericDao;
-import org.iftm.poo.model.dao.ItemEmprestimoDao;
 import org.iftm.poo.model.dao.ItemLivroDao;
 import org.iftm.poo.model.dao.LivroDao;
-import org.iftm.poo.model.dao.PessoaDao;
-import org.iftm.poo.model.dao.ProfessorDao;
-import org.iftm.poo.model.dao.ReservaDao;
 import org.iftm.poo.model.dao.TemplateDao;
-import org.iftm.poo.model.dao.UsuarioDao;
-import org.iftm.poo.model.domain.Aluno;
 import org.iftm.poo.model.domain.Autor;
 import org.iftm.poo.model.domain.Categoria;
-import org.iftm.poo.model.domain.Emprestimo;
-import org.iftm.poo.model.domain.ItemEmprestimo;
 import org.iftm.poo.model.domain.ItemLivro;
 import org.iftm.poo.model.domain.Livro;
-import org.iftm.poo.model.domain.Pessoa;
-import org.iftm.poo.model.domain.Professor;
-import org.iftm.poo.model.domain.Reserva;
-import org.iftm.poo.model.domain.Usuario;
 
 /**
  * Design Patterns
@@ -62,20 +48,6 @@ public class DaoFactory {
             return (T) new CategoriaDao();
         } else if(tipoEntidade == Autor.class){
             return (T) new AutorDao();
-        } else if(tipoEntidade == Usuario.class){
-            return (T) new UsuarioDao();
-        } else if(tipoEntidade == Pessoa.class){
-            return (T) new PessoaDao();
-        } else if(tipoEntidade == Emprestimo.class){
-            return (T) new EmprestimoDao();
-        } else if(tipoEntidade == Aluno.class){
-            return (T) new AlunoDao();
-        } else if(tipoEntidade == Professor.class){
-            return (T) new ProfessorDao();
-        }else if(tipoEntidade == ItemEmprestimo.class){
-            return (T) new ItemEmprestimoDao();
-        }else if(tipoEntidade == Reserva.class){
-            return (T) new ReservaDao();
         } else {
             return resolve();
         }
