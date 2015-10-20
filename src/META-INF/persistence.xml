@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" 
+             xmlns="http://xmlns.jcp.org/xml/ns/persistence" 
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="ienPU" transaction-type="RESOURCE_LOCAL">
+  
+	<provider>org.hibernate.ejb.HibernatePersistence</provider>
+
+	<jta-data-source>java:jboss/datasources/ien</jta-data-source>
+	
+	<class>org.iftm.poo.model.domain.Livro</class>
+	<class>org.iftm.poo.model.domain.ItemLivro</class>
+	<class>org.iftm.poo.model.domain.Autor</class>
+	<class>org.iftm.poo.model.domain.Categoria</class>
+	<class>org.iftm.poo.model.domain.Administrador</class>
+	<class>org.iftm.poo.model.domain.Aluno</class>
+	<class>org.iftm.poo.model.domain.DebitoEmprestimo</class>
+	<class>org.iftm.poo.model.domain.Emprestimo</class>
+	<class>org.iftm.poo.model.domain.ItemEmprestimo</class>
+	<class>org.iftm.poo.model.domain.Pessoa</class>
+	<class>org.iftm.poo.model.domain.Professor</class>
+	<class>org.iftm.poo.model.domain.Reserva</class>
+	<class>org.iftm.poo.model.domain.Usuario</class>
+
+	<properties>
+        <property name="hibernate.archive.autodetection" value="class, hbm"/>	
+		<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+		<!-- <property name="hibernate.hbm2ddl.auto" value="create-drop" /> -->
+		<property name="hibernate.show_sql" value="true" />
+		<property name="hibernate.archive.autodetection" value="class, hbm"/>
+	</properties>
+	
+  </persistence-unit>
+</persistence>
+
