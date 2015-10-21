@@ -1,6 +1,6 @@
 package org.iftm.poo.boundary;
 
-public class ServicoFreteDTO {
+public class FreteDTO {
 
 	private Integer codigoServico;
 	private String  nomeServico;
@@ -10,15 +10,16 @@ public class ServicoFreteDTO {
 	private String  enderecoOrigem;
 	private String  cepDestino;
 	private String  enderecoDestino;
+	private Integer  codigoFormato;
 	private String  valorServico;
 	private String  prazoEntrega;
 	private String  menssagemErro;
 	
-	public ServicoFreteDTO(){
+	public FreteDTO(){
 		cepOrigem = "38411104";
 	}
 	
-	public ServicoFreteDTO(EnderecoDTO origem, EnderecoDTO destino){
+	public FreteDTO(EnderecoDTO origem, EnderecoDTO destino){
 		cepOrigem = "38411104";
 	}	
 
@@ -84,6 +85,14 @@ public class ServicoFreteDTO {
 
 	public void setEnderecoDestino(String enderecoDestino) {
 		this.enderecoDestino = enderecoDestino;
+	}
+	
+	public Integer getCodigoFormato() {
+		return codigoFormato;
+	}
+
+	public void setCodigoFormato(Integer codigoFormato) {
+		this.codigoFormato = codigoFormato;
 	}
 
 	public String getValorServico() {

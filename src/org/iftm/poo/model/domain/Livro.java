@@ -1,6 +1,7 @@
 package org.iftm.poo.model.domain;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -32,15 +33,15 @@ public class Livro implements Serializable {
     @Column(name="ano")
     private Integer ano;
     @Column(name="altura")
-    private Double altura;
+    private BigDecimal altura;
     @Column(name="largura")
-    private Double largura;
+    private BigDecimal largura;
     @Column(name="comprimento")
-    private Double comprimento;
+    private BigDecimal comprimento;
     @Column(name="diametro")
-    private Double diametro;
+    private BigDecimal diametro;
     @Column(name="peso")
-    private Double peso;
+    private BigDecimal peso;
     @OneToMany(mappedBy = "livro", fetch = FetchType.EAGER)
     private List<ItemLivro> itens;
     @ManyToOne
@@ -233,43 +234,43 @@ public class Livro implements Serializable {
 		return true;
 	}
 
-	public Double getAltura() {
+	public BigDecimal getAltura() {
 		return altura;
 	}
 
-	public void setAltura(Double altura) {
+	public void setAltura(BigDecimal altura) {
 		this.altura = altura;
 	}
 
-	public Double getLargura() {
+	public BigDecimal getLargura() {
 		return largura;
 	}
 
-	public void setLargura(Double largura) {
+	public void setLargura(BigDecimal largura) {
 		this.largura = largura;
 	}
 
-	public Double getComprimento() {
+	public BigDecimal getComprimento() {
 		return comprimento;
 	}
 
-	public void setComprimento(Double comprimento) {
+	public void setComprimento(BigDecimal comprimento) {
 		this.comprimento = comprimento;
 	}
 
-	public Double getDiametro() {
+	public BigDecimal getDiametro() {
 		return diametro;
 	}
 
-	public void setDiametro(Double diametro) {
+	public void setDiametro(BigDecimal diametro) {
 		this.diametro = diametro;
 	}
 
-	public Double getPeso() {
+	public BigDecimal getPeso() {
 		return peso;
 	}
 
-	public void setPeso(Double peso) {
+	public void setPeso(BigDecimal peso) {
 		this.peso = peso;
 	}
 

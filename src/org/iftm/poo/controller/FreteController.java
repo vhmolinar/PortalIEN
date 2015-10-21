@@ -14,11 +14,11 @@ import org.iftm.poo.negocio.AutorService;
  *
  * @author vhmolinar
  */
-public class ServicoFreteController {
+public class FreteController {
     
     private final AutorService autorService;
     
-    public ServicoFreteController(){
+    public FreteController(){
         autorService = new AutorService();
     }
     
