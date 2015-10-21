@@ -20,6 +20,13 @@ public class LivroDTO implements Serializable {
 	private Integer codCategoria;
 	private String nomeCategoria;
 	
+	private String nomeImagem;
+	private Double altura;
+	private Double largura;
+	private Double comprimento;
+	private Double diametro;
+	private Double peso;
+	
 	public LivroDTO(){
 		
 	}
@@ -131,6 +138,54 @@ public class LivroDTO implements Serializable {
 
 	public void setNomeCategoria(String nomeCategoria) {
 		this.nomeCategoria = nomeCategoria;
+	}
+
+	public String getNomeImagem() {
+		return nomeImagem;
+	}
+
+	public void setNomeImagem(String nomeImagem) {
+		this.nomeImagem = nomeImagem;
+	}
+
+	public Double getAltura() {
+		return altura;
+	}
+
+	public void setAltura(Double altura) {
+		this.altura = altura;
+	}
+
+	public Double getLargura() {
+		return largura;
+	}
+
+	public void setLargura(Double largura) {
+		this.largura = largura;
+	}
+
+	public Double getComprimento() {
+		return comprimento;
+	}
+
+	public void setComprimento(Double comprimento) {
+		this.comprimento = comprimento;
+	}
+
+	public Double getDiametro() {
+		return diametro;
+	}
+
+	public void setDiametro(Double diametro) {
+		this.diametro = diametro;
+	}
+
+	public Double getPeso() {
+		return peso;
+	}
+
+	public void setPeso(Double peso) {
+		this.peso = peso;
 	}
 
 }

@@ -1,0 +1,8 @@
+eclipse.preferences.version=1
+encoding//src/br/com/correios/bsb/sigep/master/bean/cliente/Acao.java=UTF-8
+encoding//src/br/com/correios/bsb/sigep/master/bean/cliente/AtendeClienteService.java=UTF-8
+encoding//src/br/com/correios/bsb/sigep/master/bean/cliente/AtendeClienteServiceLocator.java=UTF-8
+encoding//src/br/com/correios/bsb/sigep/master/bean/cliente/AutenticacaoException.java=UTF-8
+encoding//src/br/com/correios/bsb/sigep/master/bean/cliente/EnderecoERP.java=UTF-8
+encoding//src/br/com/correios/bsb/sigep/master/bean/cliente/SQLException.java=UTF-8
+encoding//src/br/com/correios/bsb/sigep/master/bean/cliente/UnidadePostagemERP.java=UTF-8

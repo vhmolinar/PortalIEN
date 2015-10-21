@@ -15,8 +15,12 @@ public class ServicoFreteDTO {
 	private String  menssagemErro;
 	
 	public ServicoFreteDTO(){
-		
+		cepOrigem = "38411104";
 	}
+	
+	public ServicoFreteDTO(EnderecoDTO origem, EnderecoDTO destino){
+		cepOrigem = "38411104";
+	}	
 
 	public Integer getCodigoServico() {
 		return codigoServico;
