@@ -2,7 +2,7 @@ package org.iftm.poo.model.domain;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Objects;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -27,8 +27,20 @@ public class Livro implements Serializable {
     private String nome;
     @Column(name="edicao")
     private String edicao;
+    @Column(name="nom_img")
+    private String nomImagem;
     @Column(name="ano")
     private Integer ano;
+    @Column(name="altura")
+    private Double altura;
+    @Column(name="largura")
+    private Double largura;
+    @Column(name="comprimento")
+    private Double comprimento;
+    @Column(name="diametro")
+    private Double diametro;
+    @Column(name="peso")
+    private Double peso;
     @OneToMany(mappedBy = "livro", fetch = FetchType.EAGER)
     private List<ItemLivro> itens;
     @ManyToOne
@@ -111,46 +123,157 @@ public class Livro implements Serializable {
         this.autor = autor;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 41 * hash + Objects.hashCode(this.codLivro);
-        hash = 41 * hash + Objects.hashCode(this.nome);
-        hash = 41 * hash + Objects.hashCode(this.edicao);
-        hash = 41 * hash + Objects.hashCode(this.ano);
-        hash = 41 * hash + Objects.hashCode(this.categoria);
-        hash = 41 * hash + Objects.hashCode(this.autor);
-        return hash;
-    }
+    public String getNomImagem() {
+		return nomImagem;
+	}
+
+	public void setNomImagem(String nomImagem) {
+		this.nomImagem = nomImagem;
+	}
 
     @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Livro other = (Livro) obj;
-        if (!Objects.equals(this.codLivro, other.codLivro)) {
-            return false;
-        }
-        if (!Objects.equals(this.nome, other.nome)) {
-            return false;
-        }
-        if (!Objects.equals(this.edicao, other.edicao)) {
-            return false;
-        }
-        if (!Objects.equals(this.ano, other.ano)) {
-            return false;
-        }
-        if (!Objects.equals(this.categoria, other.categoria)) {
-            return false;
-        }
-        return Objects.equals(this.autor, other.autor);
-    }
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((altura == null) ? 0 : altura.hashCode());
+		result = prime * result + ((ano == null) ? 0 : ano.hashCode());
+		result = prime * result + ((autor == null) ? 0 : autor.hashCode());
+		result = prime * result
+				+ ((categoria == null) ? 0 : categoria.hashCode());
+		result = prime * result
+				+ ((codLivro == null) ? 0 : codLivro.hashCode());
+		result = prime * result
+				+ ((comprimento == null) ? 0 : comprimento.hashCode());
+		result = prime * result
+				+ ((diametro == null) ? 0 : diametro.hashCode());
+		result = prime * result + ((edicao == null) ? 0 : edicao.hashCode());
+		result = prime * result + ((itens == null) ? 0 : itens.hashCode());
+		result = prime * result + ((largura == null) ? 0 : largura.hashCode());
+		result = prime * result
+				+ ((nomImagem == null) ? 0 : nomImagem.hashCode());
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result + ((peso == null) ? 0 : peso.hashCode());
+		return result;
+	}
 
-    @Override
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Livro other = (Livro) obj;
+		if (altura == null) {
+			if (other.altura != null)
+				return false;
+		} else if (!altura.equals(other.altura))
+			return false;
+		if (ano == null) {
+			if (other.ano != null)
+				return false;
+		} else if (!ano.equals(other.ano))
+			return false;
+		if (autor == null) {
+			if (other.autor != null)
+				return false;
+		} else if (!autor.equals(other.autor))
+			return false;
+		if (categoria == null) {
+			if (other.categoria != null)
+				return false;
+		} else if (!categoria.equals(other.categoria))
+			return false;
+		if (codLivro == null) {
+			if (other.codLivro != null)
+				return false;
+		} else if (!codLivro.equals(other.codLivro))
+			return false;
+		if (comprimento == null) {
+			if (other.comprimento != null)
+				return false;
+		} else if (!comprimento.equals(other.comprimento))
+			return false;
+		if (diametro == null) {
+			if (other.diametro != null)
+				return false;
+		} else if (!diametro.equals(other.diametro))
+			return false;
+		if (edicao == null) {
+			if (other.edicao != null)
+				return false;
+		} else if (!edicao.equals(other.edicao))
+			return false;
+		if (itens == null) {
+			if (other.itens != null)
+				return false;
+		} else if (!itens.equals(other.itens))
+			return false;
+		if (largura == null) {
+			if (other.largura != null)
+				return false;
+		} else if (!largura.equals(other.largura))
+			return false;
+		if (nomImagem == null) {
+			if (other.nomImagem != null)
+				return false;
+		} else if (!nomImagem.equals(other.nomImagem))
+			return false;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
+			return false;
+		if (peso == null) {
+			if (other.peso != null)
+				return false;
+		} else if (!peso.equals(other.peso))
+			return false;
+		return true;
+	}
+
+	public Double getAltura() {
+		return altura;
+	}
+
+	public void setAltura(Double altura) {
+		this.altura = altura;
+	}
+
+	public Double getLargura() {
+		return largura;
+	}
+
+	public void setLargura(Double largura) {
+		this.largura = largura;
+	}
+
+	public Double getComprimento() {
+		return comprimento;
+	}
+
+	public void setComprimento(Double comprimento) {
+		this.comprimento = comprimento;
+	}
+
+	public Double getDiametro() {
+		return diametro;
+	}
+
+	public void setDiametro(Double diametro) {
+		this.diametro = diametro;
+	}
+
+	public Double getPeso() {
+		return peso;
+	}
+
+	public void setPeso(Double peso) {
+		this.peso = peso;
+	}
+
+	@Override
     public String toString() {
         return "Livro{" + "codLivro=" + codLivro + ", nome=" + nome + ", edicao=" + edicao + ", ano=" + ano + ", categoria=" + categoria + ", autor=" + autor + '}';
     }
