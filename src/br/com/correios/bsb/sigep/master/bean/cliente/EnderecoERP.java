@@ -8,7 +8,10 @@
 package br.com.correios.bsb.sigep.master.bean.cliente;
 
 public class EnderecoERP  implements java.io.Serializable {
-    private java.lang.String bairro;
+    
+	private static final long serialVersionUID = 1L;
+
+	private java.lang.String bairro;
 
     private java.lang.String cep;
 
@@ -25,6 +28,8 @@ public class EnderecoERP  implements java.io.Serializable {
     private java.lang.String uf;
 
     private br.com.correios.bsb.sigep.master.bean.cliente.UnidadePostagemERP[] unidadesPostagem;
+    
+    private java.lang.String msgErro;
 
     public EnderecoERP() {
     }
@@ -38,7 +43,8 @@ public class EnderecoERP  implements java.io.Serializable {
            java.lang.String end,
            long id,
            java.lang.String uf,
-           br.com.correios.bsb.sigep.master.bean.cliente.UnidadePostagemERP[] unidadesPostagem) {
+           br.com.correios.bsb.sigep.master.bean.cliente.UnidadePostagemERP[] unidadesPostagem,
+           java.lang.String msgErro) {
            this.bairro = bairro;
            this.cep = cep;
            this.cidade = cidade;
@@ -48,6 +54,7 @@ public class EnderecoERP  implements java.io.Serializable {
            this.id = id;
            this.uf = uf;
            this.unidadesPostagem = unidadesPostagem;
+           this.msgErro = msgErro;
     }
 
 
@@ -238,7 +245,15 @@ public class EnderecoERP  implements java.io.Serializable {
         this.unidadesPostagem[i] = _value;
     }
 
-    private java.lang.Object __equalsCalc = null;
+    public java.lang.String getMsgErro() {
+		return msgErro;
+	}
+
+	public void setMsgErro(java.lang.String msgErro) {
+		this.msgErro = msgErro;
+	}
+
+	private java.lang.Object __equalsCalc = null;
     public synchronized boolean equals(java.lang.Object obj) {
         if (!(obj instanceof EnderecoERP)) return false;
         EnderecoERP other = (EnderecoERP) obj;

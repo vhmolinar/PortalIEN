@@ -9,6 +9,7 @@ package org.iftm.poo.model.dao;
  *
  * @author vhmolinar
  */
+@SuppressWarnings("rawtypes")
 public class GenericDao  extends TemplateDao{
     public Object operacaoAtomica(ComandoPersistencia comando) throws Exception{
         return operacaoTransacional(comando);

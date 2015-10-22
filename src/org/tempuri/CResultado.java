@@ -13,8 +13,7 @@ public class CResultado  implements java.io.Serializable {
     public CResultado() {
     }
 
-    public CResultado(
-           org.tempuri.CServico[] servicos) {
+    public CResultado(org.tempuri.CServico[] servicos) {
            this.servicos = servicos;
     }
 
@@ -51,8 +50,7 @@ public class CResultado  implements java.io.Serializable {
         boolean _equals;
         _equals = true && 
             ((this.servicos==null && other.getServicos()==null) || 
-             (this.servicos!=null &&
-              java.util.Arrays.equals(this.servicos, other.getServicos())));
+             (this.servicos!=null && java.util.Arrays.equals(this.servicos, other.getServicos())));
         __equalsCalc = null;
         return _equals;
     }
@@ -65,12 +63,9 @@ public class CResultado  implements java.io.Serializable {
         __hashCodeCalc = true;
         int _hashCode = 1;
         if (getServicos() != null) {
-            for (int i=0;
-                 i<java.lang.reflect.Array.getLength(getServicos());
-                 i++) {
+            for (int i=0; i<java.lang.reflect.Array.getLength(getServicos()); i++) {
                 java.lang.Object obj = java.lang.reflect.Array.get(getServicos(), i);
-                if (obj != null &&
-                    !obj.getClass().isArray()) {
+                if (obj != null && !obj.getClass().isArray()) {
                     _hashCode += obj.hashCode();
                 }
             }
@@ -109,9 +104,7 @@ public class CResultado  implements java.io.Serializable {
            java.lang.String mechType, 
            java.lang.Class _javaType,  
            javax.xml.namespace.QName _xmlType) {
-        return 
-          new  org.apache.axis.encoding.ser.BeanSerializer(
-            _javaType, _xmlType, typeDesc);
+        return new org.apache.axis.encoding.ser.BeanSerializer(_javaType, _xmlType, typeDesc);
     }
 
     /**
@@ -121,9 +114,7 @@ public class CResultado  implements java.io.Serializable {
            java.lang.String mechType, 
            java.lang.Class _javaType,  
            javax.xml.namespace.QName _xmlType) {
-        return 
-          new  org.apache.axis.encoding.ser.BeanDeserializer(
-            _javaType, _xmlType, typeDesc);
+        return new org.apache.axis.encoding.ser.BeanDeserializer(_javaType, _xmlType, typeDesc);
     }
 
 }

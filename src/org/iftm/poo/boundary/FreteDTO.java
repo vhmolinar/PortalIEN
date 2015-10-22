@@ -1,5 +1,10 @@
 package org.iftm.poo.boundary;
 
+import org.iftm.poo.controller.EmbalagemController;
+import org.iftm.poo.controller.TipoFreteController;
+import org.iftm.poo.model.domain.Pedido;
+import org.tempuri.CServico;
+
 public class FreteDTO {
 
 	private Integer codigoServico;
@@ -10,18 +15,39 @@ public class FreteDTO {
 	private String  enderecoOrigem;
 	private String  cepDestino;
 	private String  enderecoDestino;
-	private Integer  codigoFormato;
+	private Integer codigoEmbalagem;
+	private String  nomeEmbalagem;
 	private String  valorServico;
 	private String  prazoEntrega;
-	private String  menssagemErro;
+	private String  mensagemErro;
 	
 	public FreteDTO(){
-		cepOrigem = "38411104";
 	}
 	
-	public FreteDTO(EnderecoDTO origem, EnderecoDTO destino){
-		cepOrigem = "38411104";
+	public FreteDTO(Pedido pedido, EnderecoDTO origem, EnderecoDTO destino, LivroDTO livro, CServico servico) throws Exception{
+		this.setCepOrigem(origem.getCep());
+		this.setEnderecoOrigem("Rua " + origem.getLogradouro() + " " + pedido.getNumeroOrigem() + " - " + origem.getBairro() + " - " + origem.getCidade() + " - " + origem.getUf());
+		
+		this.setCepDestino(origem.getCep());
+		this.setEnderecoDestino("Rua " + destino.getLogradouro() + " " + pedido.getNumeroDestino() + " - " + destino.getBairro() + " - " + destino.getCidade() + " - " + destino.getUf());
+		
+		this.setCodigoProduto(livro.getCodigo());
+		this.setNomeProduto(livro.getNome());
+
+		this.setCodigoEmbalagem(pedido.getCodigoEmbalagem());
+		this.setNomeEmbalagem(new EmbalagemController().buscarPorCodigo(pedido.getCodigoEmbalagem()).getNome());
+		
+		this.setCodigoServico(servico.getCodigo());
+		this.setNomeServico(new TipoFreteController().buscarPorCodigo(servico.getCodigo()).getNome());
+		
+		this.setValorServico(servico.getValor().isEmpty()        ? "" : "R$ " + servico.getValor());
+		this.setPrazoEntrega(servico.getPrazoEntrega().isEmpty() ? "" : servico.getPrazoEntrega() + " dia(s)");
+		this.setMensagemErro(servico.getMsgErro().isEmpty()     ? "" : servico.getMsgErro());
 	}	
+
+	public FreteDTO(String mensagemErro) {
+		this.setMensagemErro(mensagemErro);
+	}
 
 	public Integer getCodigoServico() {
 		return codigoServico;
@@ -70,7 +96,7 @@ public class FreteDTO {
 	public void setEnderecoOrigem(String enderecoOrigem) {
 		this.enderecoOrigem = enderecoOrigem;
 	}
-
+	
 	public String getCepDestino() {
 		return cepDestino;
 	}
@@ -87,12 +113,20 @@ public class FreteDTO {
 		this.enderecoDestino = enderecoDestino;
 	}
 	
-	public Integer getCodigoFormato() {
-		return codigoFormato;
+	public Integer getCodigoEmbalagem() {
+		return codigoEmbalagem;
 	}
 
-	public void setCodigoFormato(Integer codigoFormato) {
-		this.codigoFormato = codigoFormato;
+	public void setCodigoEmbalagem(Integer codigoEmbalagem) {
+		this.codigoEmbalagem = codigoEmbalagem;
+	}
+
+	public String getNomeEmbalagem() {
+		return nomeEmbalagem;
+	}
+
+	public void setNomeEmbalagem(String nomeEmbalagem) {
+		this.nomeEmbalagem = nomeEmbalagem;
 	}
 
 	public String getValorServico() {
@@ -111,11 +145,11 @@ public class FreteDTO {
 		this.prazoEntrega = prazoEntrega;
 	}
 
-	public String getMenssagemErro() {
-		return menssagemErro;
+	public String getMensagemErro() {
+		return mensagemErro;
 	}
 
-	public void setMenssagemErro(String menssagemErro) {
-		this.menssagemErro = menssagemErro;
+	public void setMensagemErro(String menssagemErro) {
+		this.mensagemErro = menssagemErro;
 	}
 }

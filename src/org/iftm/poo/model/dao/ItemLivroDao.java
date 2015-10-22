@@ -32,7 +32,8 @@ public class ItemLivroDao extends TemplateDao<ItemLivro>{
         return itemLivro;
     }
     
-    public List<ItemLivro> itensLivro(final Livro livro) throws Exception {
+    @SuppressWarnings("unchecked")
+	public List<ItemLivro> itensLivro(final Livro livro) throws Exception {
         return (List<ItemLivro>) this.operacaoTransacional(new ComandoPersistencia(){
             @Override
             public Object execute(EntityManager em) throws Exception {

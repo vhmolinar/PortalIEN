@@ -28,8 +28,14 @@ public class LivroDTO implements Serializable {
 	private BigDecimal diametro;
 	private BigDecimal peso;
 	
+	private String mensagemErro;
+	
 	public LivroDTO(){
 		
+	}
+	
+	public LivroDTO(String mensagemErro){
+		this.setMensagemErro(mensagemErro);
 	}
 	
 	public LivroDTO(Integer codigo, String nome, String edicao, Integer ano, Integer qtde, Integer codAutor, Integer codCategoria) {
@@ -66,6 +72,13 @@ public class LivroDTO implements Serializable {
 		
 		this.codCategoria = livro.getCategoria() != null ? livro.getCategoria().getCodCategoria() : null;
 		this.nomeCategoria = livro.getCategoria() != null ? livro.getCategoria().getDescricao() : null;
+		
+		this.nomeImagem = livro.getNomImagem() != null ? livro.getNomImagem() : "";
+		this.altura = livro.getAltura() != null ? livro.getAltura() : new BigDecimal(0);
+		this.largura = livro.getLargura() != null ? livro.getLargura() : new BigDecimal(0);
+		this.comprimento = livro.getComprimento() != null ? livro.getComprimento() : new BigDecimal(0);
+		this.diametro = livro.getDiametro() != null ? livro.getDiametro() : new BigDecimal(0);
+		this.peso = livro.getPeso() != null ? livro.getPeso() : new BigDecimal(0);
 	}	
 	
 
@@ -189,4 +202,11 @@ public class LivroDTO implements Serializable {
 		this.peso = peso;
 	}
 
+	public String getMensagemErro() {
+		return mensagemErro;
+	}
+
+	public void setMensagemErro(String mensagemErro) {
+		this.mensagemErro = mensagemErro;
+	}
 }

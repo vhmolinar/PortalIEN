@@ -22,8 +22,20 @@ public class EnderecoService {
     public EnderecoService(){
     }
     
-    public EnderecoERP buscarEndereco(String cep) throws SQLException, SigepClienteException, RemoteException{
-    	return new AtendeClienteProxy().consultaCEP(cep);
+    public EnderecoERP buscarEndereco(String cep){
+    	EnderecoERP endereco = new EnderecoERP();
+		AtendeClienteProxy atendeCliente = new AtendeClienteProxy();
+		try {
+			endereco = atendeCliente.consultaCEP(cep);
+		} catch (SQLException e) {
+			endereco.setMsgErro(e.getMessage1());
+		} catch (SigepClienteException e) {
+			endereco.setMsgErro(e.getFaultString());
+		} catch (RemoteException e) {
+			endereco.setMsgErro(e.getMessage());
+		}
+
+    	return endereco;
     }
             
 }

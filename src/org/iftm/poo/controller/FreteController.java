@@ -5,10 +5,14 @@
  */
 package org.iftm.poo.controller;
 
-import java.util.List;
+import java.rmi.RemoteException;
 
-import org.iftm.poo.model.domain.Autor;
-import org.iftm.poo.negocio.AutorService;
+import org.iftm.poo.boundary.FreteDTO;
+import org.iftm.poo.model.domain.Pedido;
+import org.iftm.poo.negocio.FreteService;
+
+import br.com.correios.bsb.sigep.master.bean.cliente.SQLException;
+import br.com.correios.bsb.sigep.master.bean.cliente.SigepClienteException;
 
 /**
  *
@@ -16,30 +20,13 @@ import org.iftm.poo.negocio.AutorService;
  */
 public class FreteController {
     
-    private final AutorService autorService;
-    
-    public FreteController(){
-        autorService = new AutorService();
+	private final FreteService freteService;
+	
+    public FreteController() throws SQLException, SigepClienteException, RemoteException{
+    	freteService = new FreteService();
     }
-    
-    public Autor novoAutor(String nomeAutor) throws Exception {
-        Autor autor = new Autor(nomeAutor);
-        
-        return autorService.salvarAtualizarAutor(autor);
-    }
-    
-    public List<Autor> consultaAutores(String nomeAutor) throws Exception {
-        Autor autor = new Autor(nomeAutor);
-        return autorService.pesquisarPorExemplo(autor);
-    }
-    
-    public List<Autor> buscarTodosAutors() throws Exception{
-        return autorService.pesquisarTodos();
-    }
-    
-    public List<Autor> pesquisarPorExemplo(Integer codAutor) throws Exception{ 
-        Autor autor = new Autor();
-        autor.setCodAutor(codAutor);
-        return autorService.pesquisarPorExemplo(autor);
+
+    public FreteDTO calcularFrete(Pedido pedido) throws Exception{
+    	return freteService.calularFrete(pedido);
     }
 }

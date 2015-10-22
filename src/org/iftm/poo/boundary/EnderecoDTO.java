@@ -10,9 +10,14 @@ public class EnderecoDTO {
 	private String bairro;
 	private String cep;
 	private String cidade;
-	private String uf;		
+	private String uf;
+	private String mensagemErro;
 	
 	public EnderecoDTO(){
+	}
+	
+	public EnderecoDTO(String mensagemErro){
+		this.setMensagemErro(mensagemErro);
 	}
 	
 	public EnderecoDTO(EnderecoERP endereco){
@@ -23,6 +28,7 @@ public class EnderecoDTO {
 		this.cep          = endereco.getCep();
 		this.cidade       = endereco.getCidade();
 		this.uf           = endereco.getUf();
+		this.mensagemErro = endereco.getMsgErro();
 	}
 
 	public String getLogradouro() {
@@ -79,6 +85,14 @@ public class EnderecoDTO {
 
 	public void setUf(String uf) {
 		this.uf = uf;
+	}
+
+	public String getMensagemErro() {
+		return mensagemErro;
+	}
+
+	public void setMensagemErro(String mensagemErro) {
+		this.mensagemErro = mensagemErro;
 	}
 	
 }
