@@ -22,9 +22,14 @@ angular.module('ien').controller('livroController',[
     $scope.categorias = [];
     $scope.autores = [];
 
+    $scope.respostaEntrega = null;
+    $scope.respostaFrete = null;
+
     var Livro = $rest.livro();
     var Autor = $rest.autor();
     var Categoria = $rest.categoria();
+    var Endereco =  $rest.endereco();
+    var Frete = $rest.frete();
 
     $this.buscarLivros = function(){
         Livro.query(function resposta(resp){
@@ -61,6 +66,35 @@ angular.module('ien').controller('livroController',[
         });
 
     });
+
+    $scope.verifica = function(cep, codLivro){
+        $this.cep = cep;
+        $this.codLivro = codLivro;
+        $scope.respostaFrete = null;
+
+        Endereco.get({cep:cep},function successo(resp){
+            $scope.respostaEntrega = resp;
+            console.log(resp);
+        }, function falha(e){
+            console.error(e);
+            alert('Falha ao consultar entrega!');
+        });
+    };
+
+    $scope.calcula = function( nro, codServico, codEmbalagem){
+        Frete.save({
+            codigoProduto: $this.codLivro,
+            cepDestino: $this.cep,
+            numeroDestino: nro,
+            codigoEmbalagem: codEmbalagem,
+            codigoServico: codServico
+        }, function successo(resp){
+            $scope.respostaFrete =resp;
+        }, function falha(e){
+            console.error(e);
+            alert('Falha ao consultar frete!');
+        });
+    };
 
     $scope.seleciona = function(livro){
         $scope.livro = livro;

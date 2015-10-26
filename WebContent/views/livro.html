@@ -2,6 +2,7 @@
     <ul class="nav nav-tabs" role="tablist">
         <li role="presentation" class="active"><a data-target="#cadastro_livros" data-toggle="tab">Cadastro</a></li>
         <li role="presentation"><a data-target="#dados_livros" data-toggle="tab">Dados</a></li>
+        <li role="presentation"><a data-target="#entregas_livros" data-toggle="tab">Entregas</a></li>
       </ul>
 
       <div class="panel panel-default">
@@ -84,6 +85,89 @@
                   </td>
                 </tr>
               </table>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="entregas_livros">
+              <div class="row list-group">
+                <div class="item  col-xs-4 col-lg-4 grid-group-item" ng-repeat="livro in livros">
+                  <div class="thumbnail" style="max-width:410px">
+                      <img class="group list-group-image" ng-src="img/{{livro.nomeImagem}}" alt="" style="width:400px;height:250px"/>
+                      <div class="caption">
+                          <h4 class="group inner list-group-item-heading">
+                              {{livro.nome}}
+                          </h4>
+                          <p class="group inner list-group-item-text">
+                              Edição - {{livro.edicao}} | Ano - {{livro.ano}} | Autor - {{livro.nomeAutor}}
+                          </p>
+                          <div class="row">
+                            <div class="col-xs-12">
+                              <form class="form-inline">
+                                <div class="form-group">
+                                  <input ng-model="cep" type="text" placeholder="CEP" class="form-control"/>
+                                </div>
+                                <div class="form-group">
+                                  <button class="btn btn-success" ng-click="verifica(cep,livro.codigo)">Verifica entrega</button>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row" ng-if="respostaEntrega != null">
+                <div class="col-xs-12" ng-if="respostaEntrega.logradouro != null">
+                  <h3>
+                    {{respostaEntrega.logradouro + ' - ' + respostaEntrega.bairro}}
+                  </h3>
+                  <form class="form-inline">
+                    <div class="form-group">
+                      <input type="text" ng-model="nro" placeholder="Nro."/>
+                    </div>
+                    <div class="form-group">
+                      <select ng-model="codServico" ng-init="codServico = '40010'">
+                        <option value="40010">SEDEX</option>
+                        <option value="40045">SEDEX A COBRAR</option>
+                        <option value="40215">SEDEX 10</option>
+                        <option value="40290">SEDEX HOJE</option>
+                        <option value="41106">PAC</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <select ng-model="codEmbalagem" ng-init="codEmbalagem = '1'">
+                        <option value="1">PACOTE</option>
+                        <option value="2">PRISMA</option>
+                        <option value="3">ENVELOPE</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <button class="btn btn-success" ng-click="calcula(nro, codServico, codEmbalagem)">Calcula Frete</button>
+                    </div>
+                    <div ng-if="respostaFrete != null && !respostaFrete.mensagemErro">
+                      <h2>Dados do Pedido</h2>
+                      <ul>
+                        <li>Nome do Produto - {{respostaFrete.nomeServico}}</li>
+                        <li>Nome do Servico - {{respostaFrete.nomeServico}}</li>
+                        <li>Valor - {{respostaFrete.valorServico}}</li>
+                        <li>Prazo - {{respostaFrete.prazoEntrega}}</li>
+                        <li>End. Origem - {{respostaFrete.enderecoOrigem}}</li>
+                        <li>End. Entrega - {{respostaFrete.enderecoDestino}}</li>
+                      </ul>
+                    </div>
+                    <div ng-if="respostaFrete.mensagemErro">
+                      <h3>
+                        {{respostaFrete.mensagemErro}}
+                      </h3>
+                    </div>
+                  </form>
+                </div>
+                <div ng-if="respostaEntrega.logradouro == null">
+                  <h3>
+                    {{respostaEntrega.mensagemErro || 'Cep sem cobertura para o serviço de entrega!'}}
+                  </h3>
+                </div>
+                <div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

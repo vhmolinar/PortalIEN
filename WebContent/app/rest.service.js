@@ -35,6 +35,26 @@ angular.module('ien').service('$rest',['$resource',function($resource){
                 }
             });
 
+        },
+
+        endereco: function(){
+
+            return $resource('/PortalIEN/rs/endereco/:cep', {
+                cep: '@cep'
+            },{
+                update: {
+                    method: 'PUT'
+                }
+            });
+        },
+
+        frete: function(){
+
+            return $resource('/PortalIEN/rs/frete', {},{
+                update: {
+                    method: 'PUT'
+                }
+            });
         }
     };
 }]);

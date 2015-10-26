@@ -43,7 +43,7 @@ public class FreteService {
     	this.codEmpresa       = "";
     	this.senhaEmpresa     = "";
     	this.maoPropria       = "n";
-    	this.valorDeclarado   = new BigDecimal(0);
+    	this.valorDeclarado   = new BigDecimal(30);
     	this.avisoRecebimento = "n";    	
     	
     	this.atendeCliente    = new AtendeClienteProxy();
